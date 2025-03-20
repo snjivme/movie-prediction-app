@@ -5,14 +5,28 @@ import requests
 
 # fetch poster
 
+# def posters(movieid):
+#     url = "https://api.themoviedb.org/3/movie/{}?api_key=eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI3ZGI2MTdhZjg5OGIwZDhmYjM5YTZhZTU1ZDQzYjFmMyIsIm5iZiI6MTc0MjMyNjYwNi44MTMsInN1YiI6IjY3ZDljYjRlYjNiNGY4MDEwNDBlODgyZSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.riHEHpGYiDmn8iOkV6KprxLgj8QKe6mpYdx8tgQOzGM&language=en-US".format(movieid)
+#     data = requests.get(url)
+#
+#     data=data.json()
+#
+#
+#
+#     return "https://image.tmdb.org/t/p/w500/"+data['poster_path']
+
+
 def posters(movieid):
-    url = "https://api.themoviedb.org/3/movie/{}?api_key=7db617af898b0d8fb39a6ae55d43b1f3sc&language=en-US".format(movieid)
-    data = requests.get(url)
-
-    data=data.json()
+    url = "https://api.themoviedb.org/3/movie/{}?language=en-US".format(movieid)
 
 
+    headers = {
+        "accept": "application/json",
+        "Authorization": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI3ZGI2MTdhZjg5OGIwZDhmYjM5YTZhZTU1ZDQzYjFmMyIsIm5iZiI6MTc0MjMyNjYwNi44MTMsInN1YiI6IjY3ZDljYjRlYjNiNGY4MDEwNDBlODgyZSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.riHEHpGYiDmn8iOkV6KprxLgj8QKe6mpYdx8tgQOzGM"
+    }
 
+    data = requests.get(url, headers=headers)
+    data = data.json()
     return "https://image.tmdb.org/t/p/w500/"+data['poster_path']
 
 
